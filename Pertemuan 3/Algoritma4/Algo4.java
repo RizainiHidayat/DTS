@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Algo4{
 	public static void main(String[] args){
-
 		Scanner sc = new Scanner(System.in);
 
 		int x, y;
