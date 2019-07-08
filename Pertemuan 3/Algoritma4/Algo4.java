@@ -9,7 +9,7 @@ public class Algo4{
 
 		System.out.print("Masukkan nilai x = ");
 		x = sc.nextInt();
-		System.out.print("Masukkan nilai x = ");
+		System.out.print("Masukkan nilai y = ");
 		y = sc.nextInt();
 
 		if(x < y){
