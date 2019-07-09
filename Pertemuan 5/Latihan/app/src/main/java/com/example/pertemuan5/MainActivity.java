@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, Menu2.class));
         } else if (item.getItemId() == R.id.menu3) {
             startActivity(new Intent(this, Menu3.class));
+        } else if (item.getItemId() == R.id.menu4) {
+            startActivity(new Intent(this, Menu4.class));
         }
         return true;
     }

@@ -4,12 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu3" >
+    tools:context=".Menu3"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/menu3"
+        android:id="@+id/Lbl3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu3"
+        android:text="@string/Lbl3"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/Txt_Nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/Btn_Tampilkan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Btn3"
+        android:textSize="14sp"
+        android:onClick="Tampil_Hasil"/>
+
+    <TextView
+        android:id="@+id/Lbl_Hasil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="30sp" />
+
 </LinearLayout>

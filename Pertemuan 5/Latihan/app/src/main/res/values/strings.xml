@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">Pertemuan 5</string>
     <string name="Lbl1">Pertemuan 5 - Menambah Button</string>
+    <string name="Lbl3">Masukkan Nama Anda</string>
     <string name="Btn1">RED</string>
     <string name="Btn2">HIJAU</string>
+    <string name="Btn3">TAMPILKAN</string>
     <string name="menu1">Menu 1</string>
     <string name="menu2">Menu 2</string>
     <string name="menu3">Menu 3</string>
+    <string name="menu4">Menu 4</string>
     <string name="btn1">1</string>
     <string name="btn2">2</string>
     <string name="btn3">3</string>
