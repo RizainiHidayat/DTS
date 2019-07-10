@@ -21,6 +21,7 @@ public class Menu3 extends AppCompatActivity {
     }
 
     public void Tampil_Hasil(View v) {
+
         Hasil.setText("Nama Anda adalah : "+Text_nama.getText());
     }
 }
