@@ -37,6 +37,7 @@ public class GanjilGenap extends AppCompatActivity {
         if (item.getItemId()==R.id.menu1){
             startActivity(new Intent(this, GanjilGenap.class));
         }
+        return true;
     }
 
     public void aksi(View v){
