@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GanjilGenap"
+    tools:context=".MainActivity"
     android:orientation="vertical">
 
     <TextView
@@ -19,16 +19,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tinput"
-        android:hint="Masukkan Angka"
+        android:hint="Masukkan Angka Pertama"
+        android:textSize="14sp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tiput2"
+        android:hint="Masukkan Angka Kedua"
         android:textSize="14sp"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <Button
-        android:id="@+id/Aksi"
+        android:id="@+id/btambah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:onClick="tambah"/>
+    <Button
+        android:id="@+id/bkurang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:onClick="kurang"
+        android:layout_marginRight="10sp"
+        />
+
+    <Button
+        android:id="@+id/bkali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:onClick="kali"/>
+    <Button
+        android:id="@+id/bbagi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:onClick="bagi"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bbersih"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="aksi"
-        android:text="Mulai"
+        android:onClick="bersih"
+        android:text="Bersihkan"
         />
 
     <TextView
@@ -48,4 +88,5 @@
         android:textSize="30sp"
         android:textStyle="bold"
         />
+
 </LinearLayout>

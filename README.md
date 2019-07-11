@@ -1,6 +1,7 @@
 # DTS
 Digital Talent Scholarship 2019 POLIBAN
-
+- 
+- 
 
 
 # Pertemuan 1 
@@ -24,3 +25,7 @@ Digital Talent Scholarship 2019 POLIBAN
 # Pertemuan 7
 - Android Menampilkan Nama
 - Belajar Memahami Coding
+
+# Pertemuan 8
+- Belajar membuat Kalkulator
+- Belajar Membuat Ganjil Genap
