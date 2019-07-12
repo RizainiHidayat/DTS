@@ -29,3 +29,7 @@ Digital Talent Scholarship 2019 POLIBAN
 # Pertemuan 8
 - Belajar membuat Kalkulator
 - Belajar Membuat Ganjil Genap
+
+# Pertemuan 9
+- Membuat aplikasi nim,nama,kampus
+- Membuat ListView
