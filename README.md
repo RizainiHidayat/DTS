@@ -5,22 +5,22 @@ Digital Talent Scholarship 2019 POLIBAN
 
 
 # Pertemuan 1 
--(Pengenalan)
+- (Pengenalan)
 
 # Pertemuan 2 
--(HelloWorld)
+- (HelloWorld)
 
 # Pertemuan 3 
--(Algoritma)
+- (Algoritma)
 
 # Pertemuan 4 
--(Pencil Desain Mockup)
+- (Pencil Desain Mockup)
 
 # Pertemuan 5 
--(Android Desain Menu1/2/3)
+- (Android Desain Menu1/2/3)
 
 # Pertemuan 6 
--(Mockup & Lanjutan Android di Menu 3 Aplikasi Input nama. Tambah Menu 4 Aplikasi Akar)
+- (Mockup & Lanjutan Android di Menu 3 Aplikasi Input nama. Tambah Menu 4 Aplikasi Akar)
 
 # Pertemuan 7
 - Android Menampilkan Nama
