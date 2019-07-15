@@ -35,3 +35,7 @@ Digital Talent Scholarship 2019 POLIBAN
 # Pertemuan 9
 - Membuat aplikasi nim,nama,kampus
 - Membuat ListView
+
+# Pertemuan 10
+- Membuat App Internal Storage
+- Membuat App External Storage
