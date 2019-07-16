@@ -39,3 +39,7 @@ Digital Talent Scholarship 2019 POLIBAN
 # Pertemuan 10
 - Membuat App Internal Storage
 - Membuat App External Storage
+
+# Pertemuan 11
+- SQLite (pemahaman singkat)
+- Membuat App Database helper
