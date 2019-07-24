@@ -1,4 +1,4 @@
-package com.example.proyek1;
+package kominfo.go.id.storage.proyek1;
 
 import org.junit.Test;
 

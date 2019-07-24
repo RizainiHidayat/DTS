@@ -1,17 +1,16 @@
-package com.example.proyek1;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
+package kominfo.go.id.storage.proyek1;
 
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,22 +23,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-public class InsertAndViewActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class InsertAndViewActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int REQUEST_CODE_STORAGE = 100;
-    int eventID  = 0;
+    int eventID=0;
     EditText edtFileName, edtContent;
     Button btnSimpan;
-    String filename = "";
+    boolean isEditabel=false;
+    String fileName = "";
     String tempCatatan = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_and_view);
-        Toolbar toolbar = findViewById(R.id.toolbar2);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -52,62 +50,62 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
         Bundle extras = getIntent().getExtras();
 
         if(extras != null){
-            filename = extras.getString("filename");
-            edtFileName.setText(filename);
+            fileName = extras.getString("filename");
+            edtFileName.setText(fileName);
             getSupportActionBar().setTitle("Ubah Catatan");
-        } else {
+        }else{
             getSupportActionBar().setTitle("Tambah Catatan");
         }
-        eventID = 1;
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (periksaIzinPenyimpanan()) {
-                bacaFile();
-            } else {
+        eventID=1;
+        if(Build.VERSION.SDK_INT >= 23){
+            if(periksaIzinPenyimpanan()){
                 bacaFile();
             }
+        }else{
+            bacaFile();
         }
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View v){
+        switch(v.getId()){
             case R.id.btnSimpan:
-                eventID = 2;
-                if (!tempCatatan.equals(edtContent.getText().toString())){
-                    if(Build.VERSION.SDK_INT >= 23){
-                        if(periksaIzinPenyimpanan()){
-                            tampilkanDialogKonfirmasiPenyimpanan();
-                        }
-                    } else {
+            eventID=2;
+            if(!tempCatatan.equals(edtContent.getText().toString())){
+                if(Build.VERSION.SDK_INT >= 23){
+                    if(periksaIzinPenyimpanan()){
                         tampilkanDialogKonfirmasiPenyimpanan();
                     }
+                }else{
+                    tampilkanDialogKonfirmasiPenyimpanan();
                 }
-                break;
+            }
+            break;
         }
     }
 
     public boolean periksaIzinPenyimpanan(){
         if(Build.VERSION.SDK_INT >= 23){
-            if(checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
                 return true;
-            } else {
+            }else{
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_STORAGE);
                 return false;
             }
-        } else {
+        }else{
             return true;
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permission, @NonNull int[] grantResults){
-        super.onRequestPermissionsResult(requestCode, permission, grantResults);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
             case REQUEST_CODE_STORAGE:
-                if(grantResults[0] ==   PackageManager.PERMISSION_GRANTED){
-                    if (eventID == 1){
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    if(eventID==1){
                         bacaFile();
-                    } else {
+                    }else{
                         tampilkanDialogKonfirmasiPenyimpanan();
                     }
                 }
@@ -115,21 +113,21 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    void bacaFile() {
+    void bacaFile(){
         String path = Environment.getExternalStorageDirectory().toString() + "/kominfo.proyek1";
         File file = new File(path, edtFileName.getText().toString());
-        if (file.exists()){
+        if(file.exists()){
             StringBuilder text = new StringBuilder();
-
             try{
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line = br.readLine();
-                while (line != null){
+
+                while(line != null){
                     text.append(line);
-                    line = br.readLine();
+                    line=br.readLine();
                 }
                 br.close();
-            }  catch (IOException e) {
+            }catch(IOException e){
                 System.out.println("Error " + e.getMessage());
             }
             tempCatatan = text.toString();
@@ -142,12 +140,11 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
         if(!Environment.MEDIA_MOUNTED.equals(state)){
             return;
         }
-
-        String path = Environment.getExternalStorageDirectory().toString()+"/kominfo.proyek1";
+        String path = Environment.getExternalStorageDirectory().toString() + "/kominfo.proyek1";
         File parent = new File(path);
-        if (parent.exists()){
-            File file = new File(path, edtFileName.getText().toString());
-            FileOutputStream outputStream = null;
+        if(parent.exists()){
+            File file = new File(path,edtFileName.getText().toString());
+            FileOutputStream outputStream=null;
             try{
                 file.createNewFile();
                 outputStream = new FileOutputStream(file);
@@ -157,20 +154,20 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
                 streamWriter.close();
                 outputStream.flush();
                 outputStream.close();
-            } catch (Exception e){
+            }catch(Exception e){
                 e.printStackTrace();
             }
-        } else {
+        }else{
             parent.mkdir();
             File file = new File(path, edtFileName.getText().toString());
-            FileOutputStream outputStream = null;
+            FileOutputStream outputStream=null;
             try{
                 file.createNewFile();
                 outputStream = new FileOutputStream(file, false);
                 outputStream.write(edtContent.getText().toString().getBytes());
                 outputStream.flush();
                 outputStream.close();
-            } catch (Exception e){
+            }catch(Exception e){
                 e.printStackTrace();
             }
         }
@@ -180,11 +177,11 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
     void tampilkanDialogKonfirmasiPenyimpanan(){
         new AlertDialog.Builder(this)
                 .setTitle("Simpan Catatan")
-                .setMessage("Apakah anda yakin ingin menyimpan catatan ini ?")
+                .setMessage("Apakah anda yakin ingin menghapus catatan ini?")
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int wichButton) {
+                    public void onClick(DialogInterface dialog, int whichButton) {
                         buatDanUbah();
                     }
                 })
@@ -192,16 +189,16 @@ public class InsertAndViewActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void onBackPressed() {
-        if (!tempCatatan.equals(edtContent.getText().toString())){
+    public void onBackPressed(){
+        if(!tempCatatan.equals(edtContent.getText().toString())){
             tampilkanDialogKonfirmasiPenyimpanan();
         }
         super.onBackPressed();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId()==android.R.id.home){
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);

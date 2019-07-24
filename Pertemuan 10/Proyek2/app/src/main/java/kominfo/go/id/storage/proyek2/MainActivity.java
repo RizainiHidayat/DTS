@@ -1,13 +1,11 @@
 package kominfo.go.id.storage.proyek2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,12 +19,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.sql.StatementEvent;
-
 public class MainActivity extends AppCompatActivity {
-
-    EditText editUsername, editPassword, editEmail,
-            editNamaLengkap, editAsalSekolah, editAlamat;
+    EditText editUsername, editPassword, editEmail, editNamaLengkap, editAsalSekolah, editAlamat;
     Button btnSimpan;
     TextView textViewPassword;
 
@@ -41,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Halaman Depan");
-
         editUsername = findViewById(R.id.editUsername);
         textViewPassword = findViewById(R.id.textViewPassword);
         editPassword = findViewById(R.id.editPassword);
@@ -53,31 +46,31 @@ public class MainActivity extends AppCompatActivity {
 
         btnSimpan.setVisibility(View.GONE);
         editUsername.setEnabled(false);
-        editPassword.setVisibility(View.INVISIBLE);
-        textViewPassword.setVisibility(View.INVISIBLE);
+        editPassword.setVisibility(View.GONE);
+        textViewPassword.setVisibility(View.GONE);
         editEmail.setEnabled(false);
         editNamaLengkap.setEnabled(false);
         editAsalSekolah.setEnabled(false);
         editAlamat.setEnabled(false);
 
-        bacaFIleLogin();
+        bacaFileLogin();
     }
 
-    void bacaFIleLogin(){
+    void bacaFileLogin(){
         File sdcard = getFilesDir();
         File file = new File(sdcard, FILENAME);
-        if(file.exists()){
+        if (file.exists()) {
             StringBuilder text = new StringBuilder();
-            try{
+            try {
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line = br.readLine();
-                while (line != null){
+                while (line != null) {
                     text.append(line);
                     line = br.readLine();
                 }
                 br.close();
-            } catch(IOException e){
-                System.out.println("Error "+e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Error " + e.getMessage());
             }
             String data = text.toString();
             String[] dataUser = data.split(";");
@@ -88,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
     void bacaDataUser(String fileName){
         File sdcard = getFilesDir();
         File file = new File(sdcard, fileName);
-        if (file.exists()){
+        if(file.exists()){
             StringBuilder text = new StringBuilder();
-            try {
+            try{
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line = br.readLine();
-                while (line != null){
+                while (line != null) {
                     text.append(line);
                     line = br.readLine();
                 }
                 br.close();
-            } catch (IOException e){
+            }catch (IOException e){
                 System.out.println("Error " + e.getMessage());
             }
             String data = text.toString();
@@ -109,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
             editNamaLengkap.setText(dataUser[3]);
             editAsalSekolah.setText(dataUser[4]);
             editAlamat.setText(dataUser[5]);
-        } else {
-            Toast.makeText(this, "User Tidak Ditemukan", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "User Tidak Ditemukan",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -122,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_logout:
                 tampilkanDialogKonfirmasiLogout();
                 break;
@@ -130,21 +123,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void hapusFile(){
+    void hapusFile() {
         File file = new File(getFilesDir(), FILENAME);
-        if (file.exists()){
+        if (file.exists()) {
             file.delete();
         }
     }
 
-    void tampilkanDialogKonfirmasiLogout(){
+    void tampilkanDialogKonfirmasiLogout() {
         new AlertDialog.Builder(this)
                 .setTitle("Logout")
-                .setMessage("Apakah anda yakin ingin Logout ?")
+                .setMessage("Apakah Anda yakin ingin Logout?")
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int wichButton) {
+                .setPositiveButton(android.R.string.yes,
+                        new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
                         hapusFile();
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);

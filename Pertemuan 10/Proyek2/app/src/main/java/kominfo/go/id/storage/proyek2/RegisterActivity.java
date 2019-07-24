@@ -1,9 +1,8 @@
 package kominfo.go.id.storage.proyek2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +13,7 @@ import java.io.FileOutputStream;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText editUsername, editPassword, editEmail,
-            editNamaLengkap, editAsalSekolah, editAlamat;
-
+    EditText editUsername, editPassword, editEmail, editNamaLengkap, editAsalSekolah, editAlamat;
     Button btnSimpan;
 
     @Override
@@ -43,24 +40,19 @@ public class RegisterActivity extends AppCompatActivity {
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isValidation()){
+                if (isValidation()) {
                     simpanFileData();
                 } else {
-                    Toast.makeText(RegisterActivity.this,
-                            "Mohon Lengkapi Seluruh Data",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Mohon Lengkapi Seluruh Data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    boolean isValidation(){
-        if(editUsername.getText().toString().equals("") ||
-            editPassword.getText().toString().equals("") ||
-            editEmail.getText().toString().equals("") ||
-            editNamaLengkap.getText().toString().equals("") ||
-            editAsalSekolah.getText().toString().equals("") ||
-            editAlamat.getText().toString().equals("")){
+    boolean isValidation() {
+        if (editUsername.getText().toString().equals("") || editPassword.getText().toString().equals("") ||
+                editEmail.getText().toString().equals("") || editNamaLengkap.getText().toString().equals("") ||
+                editAsalSekolah.getText().toString().equals("") || editAlamat.getText().toString().equals("")) {
             return false;
         } else {
             return true;
@@ -68,32 +60,22 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     void simpanFileData(){
-        String isiFile = editUsername.getText().toString() + ";"
-                + editPassword.getText().toString() + ";" +
-                editEmail.getText().toString() + ";" +
-                editNamaLengkap.getText().toString() + ";" +
-                editAsalSekolah.getText().toString() + ";" +
-                editAlamat.getText().toString();
-
+        String isiFile = editUsername.getText().toString() + ";" + editPassword.getText().toString() + ";"
+                + editEmail.getText().toString() + ";" + editNamaLengkap.getText().toString() + ";"
+                + editAsalSekolah.getText().toString() + ";" + editAlamat.getText().toString();
         File file = new File(getFilesDir(), editUsername.getText().toString());
+
         FileOutputStream outputStream = null;
-        try{
+        try {
             file.createNewFile();
             outputStream = new FileOutputStream(file, false);
             outputStream.write(isiFile.getBytes());
             outputStream.flush();
             outputStream.close();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        Toast.makeText(this,
-                "Register Berhasil",
-                      Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show();
         onBackPressed();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }
