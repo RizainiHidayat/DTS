@@ -9,6 +9,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 2;
