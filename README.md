@@ -59,3 +59,7 @@ Digital Talent Scholarship 2019 POLIBAN
 
 ### Pertemuan 16
 - Ujian Teori Berbasis Quiz
+
+### Pertemuan 17
+- Ujian Praktek Berbasis Quiz
+- Final Project
